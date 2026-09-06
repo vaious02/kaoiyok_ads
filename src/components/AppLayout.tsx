@@ -1,11 +1,13 @@
 import { useState } from 'react'
 import { NavLink, Outlet, useNavigate } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
+import FirstVisitPopup from './FirstVisitPopup'
 
 const navItems = [
   { to: '/dashboard', label: 'ภาพรวม', icon: '📊' },
   { to: '/campaigns', label: 'แคมเปญ', icon: '🎯' },
   { to: '/metrics', label: 'บันทึกผลรายวัน', icon: '📝' },
+  { to: '/news', label: 'ข่าวสารและกิจกรรม', icon: '📰' },
   { to: '/settings', label: 'ตั้งค่า', icon: '⚙️' },
 ]
 
@@ -86,6 +88,8 @@ export default function AppLayout() {
           <Outlet />
         </main>
       </div>
+
+      <FirstVisitPopup />
     </div>
   )
 }

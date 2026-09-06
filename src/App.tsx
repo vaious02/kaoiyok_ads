@@ -8,6 +8,7 @@ import LoginPage from './pages/LoginPage'
 import DashboardPage from './pages/DashboardPage'
 import CampaignsPage from './pages/CampaignsPage'
 import MetricsPage from './pages/MetricsPage'
+import NewsPage from './pages/NewsPage'
 import SettingsPage from './pages/SettingsPage'
 import type { ReactElement } from 'react'
 
@@ -48,6 +49,7 @@ export default function App() {
         <Route path="/dashboard" element={<DashboardPage />} />
         <Route path="/campaigns" element={<CampaignsPage />} />
         <Route path="/metrics" element={<MetricsPage />} />
+        <Route path="/news" element={<NewsPage />} />
         <Route path="/settings" element={<SettingsPage />} />
       </Route>
       <Route path="/" element={<Navigate to="/dashboard" replace />} />
