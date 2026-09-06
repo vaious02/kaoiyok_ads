@@ -48,7 +48,17 @@ export default function NewsPage() {
           </p>
         </div>
         <div className="head-actions">
-          <a className="btn btn-primary" href={centerContact.lineUrl} target="_blank" rel="noreferrer">
+          {featured?.registerUrl && (
+            <a
+              className="btn btn-primary"
+              href={featured.registerUrl}
+              target="_blank"
+              rel="noreferrer"
+            >
+              📝 ลงทะเบียนกิจกรรม
+            </a>
+          )}
+          <a className="btn btn-ghost" href={centerContact.lineUrl} target="_blank" rel="noreferrer">
             LINE {centerContact.line}
           </a>
         </div>
@@ -66,9 +76,15 @@ export default function NewsPage() {
             <h2 className="news-featured-title">{featured.title}</h2>
             <p className="muted">{featured.summary}</p>
             <ul className="news-featured-meta">
-              {featured.eventDate && <li>📅 {formatFullDate(featured.eventDate)}</li>}
+              {featured.eventDate && (
+                <li>
+                  📅 {formatFullDate(featured.eventDate)}
+                  {featured.time && ` · ${featured.time}`}
+                </li>
+              )}
               {featured.location && <li>📍 {featured.location}</li>}
               {featured.fee && <li>🎟️ {featured.fee}</li>}
+              {featured.note && <li>📌 {featured.note}</li>}
             </ul>
             <div className="head-actions">
               <button type="button" className="btn btn-primary" onClick={() => setSelected(featured)}>
@@ -148,15 +164,24 @@ export default function NewsPage() {
         <div>
           <h2>สนใจเข้าร่วมหรือสอบถามข้อมูล</h2>
           <p className="page-sub">
-            ทีมงาน {centerContact.name} พร้อมให้คำแนะนำเรื่องการดูแลผู้สูงอายุทุกวันในเวลาทำการ
+            {centerContact.visitNote} · โทร {centerContact.phone} ({centerContact.phoneHours}) ·{' '}
+            <a className="link" href={centerContact.websiteUrl} target="_blank" rel="noreferrer">
+              {centerContact.websiteUrl.replace('https://', '')}
+            </a>
           </p>
         </div>
         <div className="head-actions">
           <a className="btn btn-primary" href={centerContact.lineUrl} target="_blank" rel="noreferrer">
-            ลงทะเบียนผ่าน LINE {centerContact.line}
+            LINE {centerContact.line}
           </a>
           <a className="btn btn-ghost" href={`tel:${centerContact.phone.replace(/-/g, '')}`}>
             โทร {centerContact.phone}
+          </a>
+          <a className="btn btn-ghost" href={centerContact.facebookUrl} target="_blank" rel="noreferrer">
+            Messenger
+          </a>
+          <a className="btn btn-ghost" href={centerContact.mapUrl} target="_blank" rel="noreferrer">
+            แผนที่
           </a>
         </div>
       </section>

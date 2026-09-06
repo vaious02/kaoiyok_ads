@@ -52,8 +52,19 @@ export default function FirstVisitPopup() {
       onClose={close}
       footer={
         <>
-          <Link className="btn btn-primary" to="/news" onClick={close}>
-            ดูข่าวสารและกิจกรรมทั้งหมด
+          {item.registerUrl && (
+            <a
+              className="btn btn-primary"
+              href={item.registerUrl}
+              target="_blank"
+              rel="noreferrer"
+              onClick={close}
+            >
+              📝 ลงทะเบียนเข้าร่วม
+            </a>
+          )}
+          <Link className="btn btn-ghost" to="/news" onClick={close}>
+            ดูข่าวสารทั้งหมด
           </Link>
           <button type="button" className="btn btn-ghost" onClick={close}>
             ไว้ก่อน
